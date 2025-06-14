@@ -16,13 +16,12 @@ const __dirname = path.resolve();
 if (process.env.NODE_ENV !== "production") {
   app.use(
     cors({
-      origin: "http://localhost:5173",
+      origin: process.env.FRONTEND_URL,
     })
   );
 }
-app.use(express.json()); 
+app.use(express.json());
 app.use(rateLimiter);
-
 
 app.use("/api/notes", notesRoutes);
 
